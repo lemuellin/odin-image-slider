@@ -3,7 +3,7 @@ setInterval(function(){
     if (currPos!=5){
         next();
     }
-}, 2000);
+}, 5000);
 
 
 function next(){
