@@ -1,31 +1,37 @@
 let currPos = 1;
-setInterval(function(){
+const auto = setInterval(function(){
     if (currPos!=5){
         next();
     }
 }, 5000);
 
+document.querySelector(".img1").style.display = "block";
 
 function next(){
-    let x =  -currPos * 350;
-    document.querySelector('.slides').style.transform = `translateX(${x}px)`;
+    // let x =  -currPos * 350;
+    // document.querySelector('.slides').style.transform = `translateX(${x}px)`;
+    document.querySelector(`.img${currPos}`).style.display = "none";
     currPos++;
-    resetNav();
-    document.querySelector(`.img${currPos}`).style.background = "green";
+    document.querySelector(`.img${currPos}`).style.display = "block";
+    renewNav();
 }
 
 function prev(){
-    let x = -(currPos-2) * 350;
-    document.querySelector('.slides').style.transform = `translateX(${x}px)`;
+    // let x = -(currPos-2) * 350;
+    // document.querySelector('.slides').style.transform = `translateX(${x}px)`;
+    document.querySelector(`.img${currPos}`).style.display = "none";
     currPos--;
-    resetNav();
-    document.querySelector(`.img${currPos}`).style.background = "green";
+    document.querySelector(`.img${currPos}`).style.display = "block";
+    renewNav();
 }
 
-function resetNav(){
+function renewNav(){
     for (let i = 1; i <= 5; i++){
-        document.querySelector(`.img${i}`).style.background = "red";
+        document.querySelector(`.imgNav${i}`).style.background = "red";
     }
+    document.querySelector(`.imgNav${currPos}`).style.background = "green";
+    clearInterval(auto);
+    console.log(currPos);
 }
 
 //Next and Previous Button
@@ -39,11 +45,12 @@ document.querySelector('.prevBtn').addEventListener('click', ()=>{
 
 //NavBar Div Button
 for (let i = 1; i <= 5; i++){
-    document.querySelector(`.img${i}`).addEventListener('click', ()=>{
+    document.querySelector(`.imgNav${i}`).addEventListener('click', ()=>{
+        document.querySelector(`.img${currPos}`).style.display = "none";
         currPos = i;
-        let x = -(i-1)*350;
-        document.querySelector('.slides').style.transform = `translateX(${x}px)`;
-        resetNav();
-        document.querySelector(`.img${currPos}`).style.background = "green";
+        // let x = -(i-1)*350;
+        // document.querySelector('.slides').style.transform = `translateX(${x}px)`;
+        document.querySelector(`.img${currPos}`).style.display = "block";
+        renewNav();
     });
 }

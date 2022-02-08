@@ -9,6 +9,7 @@
 img{
     width: 300px;
     height: 300px;
+    display: none;
 }
 
 .slides{
@@ -51,6 +52,6 @@ body{
     border-radius: 50%;
 }
 
-.img1{
+.imgNav1{
     background-color: green;
 }
